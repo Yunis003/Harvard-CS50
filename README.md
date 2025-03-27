@@ -1,1 +1,1 @@
-# Harvard-CS50
+# This repository includes my Harvard-CS50 journey.
