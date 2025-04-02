@@ -16,6 +16,11 @@ int main(int argc, string argv[])
         string plaintext = get_string("plaintext: ");
         caesarCode(plaintext, key);
         printf("ciphertext: %s\n", plaintext);
+        return 0;
+    }
+    else{
+        printf("Usage: ./caesar key\n");
+        return 1;
     }
 }
 
@@ -23,15 +28,13 @@ string caesarCode(string text, int key)
 {
     for (int i = 0, n = strlen(text); i < n; i++)
     {
-        if (text[i] >= 'a' || text[i] <= 'z')
+        if (islower(text[i]))
         {
-            int c = (int) text[i] + key;
-            text[i] = (char) c;
+            text[i] = (char) (((text[i] - 'a' + key) % 26) + 'a');
         }
-        else
+        else if (isupper(text[i]))
         {
-            int c = (int) text[i] + key;
-            text[i] = toupper((char) c);
+            text[i] = (char) (((text[i] - 'A' + key) % 26) + 'A');
         }
     }
     return text;
